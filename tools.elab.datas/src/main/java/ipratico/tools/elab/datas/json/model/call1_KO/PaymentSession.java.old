@@ -1,0 +1,56 @@
+package ipratico.tools.elab.datas.json.model.call1;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+@Entity
+@Table(name = "payment_session")
+public class PaymentSession {
+
+    @Id
+    @Column(name = "id", nullable = false)
+    private String id;
+
+    @Column(name = "cas", nullable = false)
+    private String cas;
+
+    @OneToOne
+    @JoinColumn(name = "value_id")
+    @JsonManagedReference
+    private Value value;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCas() {
+        return cas;
+    }
+
+    public void setCas(String cas) {
+        this.cas = cas;
+    }
+
+    public Value getValue() {
+        return value;
+    }
+
+    public void setValue(Value value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "PaymentSession [id=" + id + ", cas=" + cas + ", value=" + value + "]";
+    }
+}

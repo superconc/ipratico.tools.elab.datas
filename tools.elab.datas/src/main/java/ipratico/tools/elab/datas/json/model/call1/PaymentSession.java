@@ -1,5 +1,9 @@
 package ipratico.tools.elab.datas.json.model.call1;
 
+
+/**
+ * primo elemento del json
+ */
 public class PaymentSession {
 	private String id;
     private String cas;
@@ -29,4 +33,5 @@ public class PaymentSession {
 	public String toString() {
 		return "PaymentSession [id=" + id + ", cas=" + cas + ", value=" + value + "]";
 	}
+	
 }

@@ -1,0 +1,55 @@
+package ipratico.tools.elab.datas.json.model.call1;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.List;
+
+@Entity
+@Table(name = "family")
+public class Family {
+
+    @Id
+    @Column(name = "family_id", nullable = false)
+    private String familyId;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+    
+// TODO Samuele verificare se serve
+//    @OneToMany(mappedBy = "family")
+//    @JsonManagedReference  // Gestione della relazione Many-to-One con Category
+//    private List<Category> categories;
+
+    public String getFamilyId() {
+        return familyId;
+    }
+
+    public void setFamilyId(String familyId) {
+        this.familyId = familyId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+//    public List<Category> getCategories() {
+//        return categories;
+//    }
+//
+//    public void setCategories(List<Category> categories) {
+//        this.categories = categories;
+//    }
+
+    @Override
+    public String toString() {
+        return "Family [familyId=" + familyId + ", name=" + name + "]";
+    }
+}

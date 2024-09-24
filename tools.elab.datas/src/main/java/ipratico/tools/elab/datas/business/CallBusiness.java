@@ -11,6 +11,12 @@ import ipratico.tools.elab.datas.persitence.beans.NegozioConfigEntity;
 
 public class CallBusiness {
 	
+	/**
+	 * 
+	 * @param negozioConfigEntities
+	 * @param dateFrom
+	 * @param dateTo
+	 */
 	public void executeCall(List<NegozioConfigEntity> negozioConfigEntities, String dateFrom, String dateTo) {
 
 		for (Iterator<NegozioConfigEntity> iterator = negozioConfigEntities.iterator(); iterator.hasNext();) {
@@ -29,12 +35,12 @@ public class CallBusiness {
 			} else if (negozioConfigEntity.getIdChiamata().equals(NumeroCallEnum.CALL_DUE.getNumero())) 
 			{
 				//TODO
-				//CHIAMATA DUE
+				//CHIAMATA DUE --> per il momento non c'e'
 
 			} else if (negozioConfigEntity.getIdChiamata().equals(NumeroCallEnum.CALL_TRE.getNumero())) 
 			{
 				//TODO
-				//CHIAMATA TRE
+				//CHIAMATA TRE --> per il momento non c'e'
 			}
 			
 

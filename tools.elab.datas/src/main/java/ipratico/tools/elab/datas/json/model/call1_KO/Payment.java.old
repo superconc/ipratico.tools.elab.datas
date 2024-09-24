@@ -1,0 +1,82 @@
+package ipratico.tools.elab.datas.json.model.call1;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "createdDate")
+@Entity
+@Table(name = "payment")
+public class Payment {
+
+//    @Id
+    @Column(name = "created_date", nullable = false)
+    private String createdDate;
+
+    @Column(name = "amount", nullable = false)
+    private double amount;
+
+    @Column(name = "is_payment_with_fidelity_card")
+    private String isPaymentWithFidelityCard;
+
+    @Column(name = "original_payment_id")
+    private String originalPaymentId;
+
+    @OneToOne
+    @JoinColumn(name = "transaction_detail_id")
+    @JsonManagedReference
+    private TransactionDetail transactionDetail;
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getIsPaymentWithFidelityCard() {
+        return isPaymentWithFidelityCard;
+    }
+
+    public void setIsPaymentWithFidelityCard(String isPaymentWithFidelityCard) {
+        this.isPaymentWithFidelityCard = isPaymentWithFidelityCard;
+    }
+
+    public String getOriginalPaymentId() {
+        return originalPaymentId;
+    }
+
+    public void setOriginalPaymentId(String originalPaymentId) {
+        this.originalPaymentId = originalPaymentId;
+    }
+
+    public TransactionDetail getTransactionDetail() {
+        return transactionDetail;
+    }
+
+    public void setTransactionDetail(TransactionDetail transactionDetail) {
+        this.transactionDetail = transactionDetail;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment [createdDate=" + createdDate + ", amount=" + amount + ", isPaymentWithFidelityCard="
+                + isPaymentWithFidelityCard + ", originalPaymentId=" + originalPaymentId + ", transactionDetail="
+                + transactionDetail + "]";
+    }
+}
