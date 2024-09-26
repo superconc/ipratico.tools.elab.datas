@@ -1,4 +1,4 @@
-package ipratico.tools.elab.datas.business;
+package ipratico.tools.elab.datas.business.mapper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
