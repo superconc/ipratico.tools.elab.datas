@@ -63,12 +63,19 @@
 			<version>2.2</version>
 		</dependency>
 
+<!--per sqlserver-->
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
 			<version>12.8.1.jre11</version>
 		</dependency>
 
+<!--per postgres-->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.5.0</version>
+		</dependency>
 
 	</dependencies>
 

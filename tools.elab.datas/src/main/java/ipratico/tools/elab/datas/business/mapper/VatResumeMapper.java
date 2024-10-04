@@ -2,7 +2,7 @@ package ipratico.tools.elab.datas.business.mapper;
 
 public class VatResumeMapper {
 
-    public static void copyJsonToHibernate(ipratico.tools.elab.datas.json.model.call1.VatResume jsonVatResume, ipratico.tools.elab.datas.persitence.beans.callJson.VatResume hibernateVatResume) {
+    public static void copyJsonToHibernate(ipratico.tools.elab.datas.json.model.call1.VatResume jsonVatResume, ipratico.tools.elab.datas.persitence.beans.callJson.VatResumeEntity hibernateVatResume) {
         // Copia il campo rate (conversione da int a Float)
         hibernateVatResume.setRate((float) jsonVatResume.getRate());
 

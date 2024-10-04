@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "printed_order_items")
-public class PrintedOrderItem {
+public class PrintedOrderItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class PrintedOrderItem {
 
     @ManyToOne
     @JoinColumn(name = "closed_payment_session_id", nullable = false)
-    private ClosedPaymentSession closedPaymentSession;
+    private ClosedPaymentSessionEntity closedPaymentSession;
 
 	public Long getId() {
 		return id;
@@ -121,11 +121,11 @@ public class PrintedOrderItem {
 		this.vatRecordCategoryName = vatRecordCategoryName;
 	}
 
-	public ClosedPaymentSession getClosedPaymentSession() {
+	public ClosedPaymentSessionEntity getClosedPaymentSession() {
 		return closedPaymentSession;
 	}
 
-	public void setClosedPaymentSession(ClosedPaymentSession closedPaymentSession) {
+	public void setClosedPaymentSession(ClosedPaymentSessionEntity closedPaymentSession) {
 		this.closedPaymentSession = closedPaymentSession;
 	}
 

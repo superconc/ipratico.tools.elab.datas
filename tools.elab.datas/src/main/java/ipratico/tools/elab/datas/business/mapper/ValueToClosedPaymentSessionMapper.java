@@ -6,9 +6,11 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import ipratico.tools.elab.datas.config.ConfigLoader;
+
 public class ValueToClosedPaymentSessionMapper {
 
-    public static void copyJsonToHibernate(ipratico.tools.elab.datas.json.model.call1.Value jsonValue, ipratico.tools.elab.datas.persitence.beans.callJson.ClosedPaymentSession hibernateClosePaymentSession) throws ParseException {
+    public static void copyJsonToHibernate(ipratico.tools.elab.datas.json.model.call1.Value jsonValue, ipratico.tools.elab.datas.persitence.beans.callJson.ClosedPaymentSessionEntity hibernateClosePaymentSession) throws ParseException {
         // Copia i campi semplici
         hibernateClosePaymentSession.setAppVersion(jsonValue.getAppVersion());
         hibernateClosePaymentSession.setType(jsonValue.getType());
@@ -37,7 +39,8 @@ public class ValueToClosedPaymentSessionMapper {
             hibernateClosePaymentSession.setClosureDate(closureDate);
         }
         if (jsonValue.getReferenceDate() != null) {
-            Date referenceDate = dateFormat.parse(jsonValue.getReferenceDate());
+        	SimpleDateFormat dateFormatReferenceDate = new SimpleDateFormat(ConfigLoader.getProperty("ipratico.format.date.reference"));
+            Date referenceDate = dateFormatReferenceDate.parse(jsonValue.getReferenceDate());
             hibernateClosePaymentSession.setReferenceDate(referenceDate);
         }
 
@@ -46,9 +49,9 @@ public class ValueToClosedPaymentSessionMapper {
 
         // Conversione di liste di oggetti (es. payments)
         if (jsonValue.getPayments() != null) {
-            Set<ipratico.tools.elab.datas.persitence.beans.callJson.Payment> hibernatePayments = new HashSet<>();
+            Set<ipratico.tools.elab.datas.persitence.beans.callJson.PaymentEntity> hibernatePayments = new HashSet<>();
             for (ipratico.tools.elab.datas.json.model.call1.Payment jsonPayment : jsonValue.getPayments()) {
-                ipratico.tools.elab.datas.persitence.beans.callJson.Payment hibernatePayment = new ipratico.tools.elab.datas.persitence.beans.callJson.Payment();
+                ipratico.tools.elab.datas.persitence.beans.callJson.PaymentEntity hibernatePayment = new ipratico.tools.elab.datas.persitence.beans.callJson.PaymentEntity();
                 PaymentMapper.copyJsonToHibernate(jsonPayment, hibernatePayment); // Usa un mapper per i Payment
                 hibernatePayments.add(hibernatePayment);
             }
@@ -57,9 +60,9 @@ public class ValueToClosedPaymentSessionMapper {
 
         // Conversione di vatResume (presupponendo una logica simile per i VatResume)
         if (jsonValue.getVatResume() != null) {
-            Set<ipratico.tools.elab.datas.persitence.beans.callJson.VatResume> hibernateVatResumes = new HashSet<>();
+            Set<ipratico.tools.elab.datas.persitence.beans.callJson.VatResumeEntity> hibernateVatResumes = new HashSet<>();
             for (ipratico.tools.elab.datas.json.model.call1.VatResume jsonVatResume : jsonValue.getVatResume()) {
-                ipratico.tools.elab.datas.persitence.beans.callJson.VatResume hibernateVatResume = new ipratico.tools.elab.datas.persitence.beans.callJson.VatResume();
+                ipratico.tools.elab.datas.persitence.beans.callJson.VatResumeEntity hibernateVatResume = new ipratico.tools.elab.datas.persitence.beans.callJson.VatResumeEntity();
                 VatResumeMapper.copyJsonToHibernate(jsonVatResume, hibernateVatResume); // Usa un mapper per i VatResume
                 hibernateVatResumes.add(hibernateVatResume);
             }
@@ -68,9 +71,9 @@ public class ValueToClosedPaymentSessionMapper {
 
         // Conversione di printedOrderItems (simile)
         if (jsonValue.getPrintedOrderItems() != null) {
-            Set<ipratico.tools.elab.datas.persitence.beans.callJson.PrintedOrderItem> hibernatePrintedOrderItems = new HashSet<>();
+            Set<ipratico.tools.elab.datas.persitence.beans.callJson.PrintedOrderItemEntity> hibernatePrintedOrderItems = new HashSet<>();
             for (ipratico.tools.elab.datas.json.model.call1.PrintedOrderItem jsonPrintedOrderItem : jsonValue.getPrintedOrderItems()) {
-                ipratico.tools.elab.datas.persitence.beans.callJson.PrintedOrderItem hibernatePrintedOrderItem = new ipratico.tools.elab.datas.persitence.beans.callJson.PrintedOrderItem();
+                ipratico.tools.elab.datas.persitence.beans.callJson.PrintedOrderItemEntity hibernatePrintedOrderItem = new ipratico.tools.elab.datas.persitence.beans.callJson.PrintedOrderItemEntity();
                 PrintedOrderItemMapper.copyJsonToHibernate(jsonPrintedOrderItem, hibernatePrintedOrderItem); // Usa un mapper per i PrintedOrderItems
                 hibernatePrintedOrderItems.add(hibernatePrintedOrderItem);
             }

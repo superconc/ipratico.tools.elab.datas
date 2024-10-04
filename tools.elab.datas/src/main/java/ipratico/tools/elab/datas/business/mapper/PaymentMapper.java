@@ -7,7 +7,7 @@ import java.util.Date;
 public class PaymentMapper {
 
 	public static void copyJsonToHibernate(ipratico.tools.elab.datas.json.model.call1.Payment jsonPayment,
-			ipratico.tools.elab.datas.persitence.beans.callJson.Payment hibernatePayment) throws ParseException {
+			ipratico.tools.elab.datas.persitence.beans.callJson.PaymentEntity hibernatePayment) throws ParseException {
 		// Copia il campo createdDate
 		
 		String jsonDate = jsonPayment.getCreatedDate();

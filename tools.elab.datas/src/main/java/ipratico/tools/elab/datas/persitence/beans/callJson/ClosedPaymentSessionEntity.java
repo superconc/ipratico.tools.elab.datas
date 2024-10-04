@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "closed_payment_session")
-public class ClosedPaymentSession {
+public class ClosedPaymentSessionEntity {
 
     @Id
     @Column(name = "id")
@@ -87,13 +87,13 @@ public class ClosedPaymentSession {
     private Boolean successfullyPrintedOnFiscal;
 
     @OneToMany(mappedBy = "closedPaymentSession", cascade = CascadeType.ALL)
-    private Set<VatResume> vatResumes;
+    private Set<VatResumeEntity> vatResumes;
 
     @OneToMany(mappedBy = "closedPaymentSession", cascade = CascadeType.ALL)
-    private Set<Payment> payments;
+    private Set<PaymentEntity> payments;
 
     @OneToMany(mappedBy = "closedPaymentSession", cascade = CascadeType.ALL)
-    private Set<PrintedOrderItem> printedOrderItems;
+    private Set<PrintedOrderItemEntity> printedOrderItems;
 
 	public String getId() {
 		return id;
@@ -295,27 +295,27 @@ public class ClosedPaymentSession {
 		this.successfullyPrintedOnFiscal = successfullyPrintedOnFiscal;
 	}
 
-	public Set<VatResume> getVatResumes() {
+	public Set<VatResumeEntity> getVatResumes() {
 		return vatResumes;
 	}
 
-	public void setVatResumes(Set<VatResume> vatResumes) {
+	public void setVatResumes(Set<VatResumeEntity> vatResumes) {
 		this.vatResumes = vatResumes;
 	}
 
-	public Set<Payment> getPayments() {
+	public Set<PaymentEntity> getPayments() {
 		return payments;
 	}
 
-	public void setPayments(Set<Payment> payments) {
+	public void setPayments(Set<PaymentEntity> payments) {
 		this.payments = payments;
 	}
 
-	public Set<PrintedOrderItem> getPrintedOrderItems() {
+	public Set<PrintedOrderItemEntity> getPrintedOrderItems() {
 		return printedOrderItems;
 	}
 
-	public void setPrintedOrderItems(Set<PrintedOrderItem> printedOrderItems) {
+	public void setPrintedOrderItems(Set<PrintedOrderItemEntity> printedOrderItems) {
 		this.printedOrderItems = printedOrderItems;
 	}
 }

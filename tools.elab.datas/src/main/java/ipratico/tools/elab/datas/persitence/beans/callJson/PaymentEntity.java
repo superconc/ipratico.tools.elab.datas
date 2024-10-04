@@ -7,7 +7,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "payments")
-public class Payment {
+public class PaymentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "closed_payment_session_id", nullable = false)
-    private ClosedPaymentSession closedPaymentSession;
+    private ClosedPaymentSessionEntity closedPaymentSession;
 
 	public Long getId() {
 		return id;
@@ -92,11 +92,11 @@ public class Payment {
 		this.moneyTypeId = moneyTypeId;
 	}
 
-	public ClosedPaymentSession getClosedPaymentSession() {
+	public ClosedPaymentSessionEntity getClosedPaymentSession() {
 		return closedPaymentSession;
 	}
 
-	public void setClosedPaymentSession(ClosedPaymentSession closedPaymentSession) {
+	public void setClosedPaymentSession(ClosedPaymentSessionEntity closedPaymentSession) {
 		this.closedPaymentSession = closedPaymentSession;
 	}
 

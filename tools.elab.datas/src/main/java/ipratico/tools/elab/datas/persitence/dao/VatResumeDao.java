@@ -7,16 +7,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import ipratico.tools.elab.datas.persitence.EntityManagerFactoryProvider;
-import ipratico.tools.elab.datas.persitence.beans.callJson.VatResume;
+import ipratico.tools.elab.datas.persitence.beans.callJson.VatResumeEntity;
 
 
 public class VatResumeDao {
 
     // Metodo per ottenere un'entità per ID
-    public static Optional<VatResume> getById(Long id) {
+    public static Optional<VatResumeEntity> getById(Long id) {
         EntityManager entityManager = EntityManagerFactoryProvider.getEntityManager();
         try {
-            VatResume entity = entityManager.find(VatResume.class, id);
+            VatResumeEntity entity = entityManager.find(VatResumeEntity.class, id);
             return Optional.ofNullable(entity);
         } finally {
             // entityManager.close();
@@ -24,10 +24,10 @@ public class VatResumeDao {
     }
 
     // Metodo per ottenere tutte le entità
-    public static List<VatResume> getAll() {
+    public static List<VatResumeEntity> getAll() {
         EntityManager entityManager = EntityManagerFactoryProvider.getEntityManager();
         try {
-            return entityManager.createQuery("SELECT v FROM VatResume v", VatResume.class)
+            return entityManager.createQuery("SELECT v FROM VatResume v", VatResumeEntity.class)
                     .getResultList();
         } finally {
             // entityManager.close();
@@ -35,7 +35,7 @@ public class VatResumeDao {
     }
 
     // Metodo per aggiornare un'entità esistente
-    public static void update(VatResume entity) {
+    public static void update(VatResumeEntity entity) {
         EntityManager entityManager = EntityManagerFactoryProvider.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -53,7 +53,7 @@ public class VatResumeDao {
     }
 
     // Metodo per inserire una nuova entità
-    public static void insert(VatResume entity) {
+    public static void insert(VatResumeEntity entity) {
         EntityManager entityManager = EntityManagerFactoryProvider.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {

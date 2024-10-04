@@ -5,15 +5,15 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import ipratico.tools.elab.datas.persitence.EntityManagerFactoryProvider;
-import ipratico.tools.elab.datas.persitence.beans.callJson.Payment;
+import ipratico.tools.elab.datas.persitence.beans.callJson.PaymentEntity;
 
 public class PaymentDao {
 
     // Metodo per ottenere un'entità per ID
-    public static Optional<Payment> getById(Long id) {
+    public static Optional<PaymentEntity> getById(Long id) {
         EntityManager entityManager = EntityManagerFactoryProvider.getEntityManager();
         try {
-            Payment entity = entityManager.find(Payment.class, id);
+            PaymentEntity entity = entityManager.find(PaymentEntity.class, id);
             return Optional.ofNullable(entity);
         } finally {
             // entityManager.close();
@@ -21,10 +21,10 @@ public class PaymentDao {
     }
 
     // Metodo per ottenere tutte le entità
-    public static List<Payment> getAll() {
+    public static List<PaymentEntity> getAll() {
         EntityManager entityManager = EntityManagerFactoryProvider.getEntityManager();
         try {
-            return entityManager.createQuery("SELECT p FROM Payment p", Payment.class)
+            return entityManager.createQuery("SELECT p FROM Payment p", PaymentEntity.class)
                     .getResultList();
         } finally {
             // entityManager.close();
@@ -32,7 +32,7 @@ public class PaymentDao {
     }
 
     // Metodo per aggiornare un'entità esistente
-    public static void update(Payment entity) {
+    public static void update(PaymentEntity entity) {
         EntityManager entityManager = EntityManagerFactoryProvider.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
@@ -50,7 +50,7 @@ public class PaymentDao {
     }
 
     // Metodo per inserire una nuova entità
-    public static void insert(Payment entity) {
+    public static void insert(PaymentEntity entity) {
         EntityManager entityManager = EntityManagerFactoryProvider.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {

@@ -2,7 +2,7 @@ package ipratico.tools.elab.datas.business.mapper;
 
 public class PrintedOrderItemMapper {
 
-    public static void copyJsonToHibernate(ipratico.tools.elab.datas.json.model.call1.PrintedOrderItem jsonPrintedOrderItem, ipratico.tools.elab.datas.persitence.beans.callJson.PrintedOrderItem hibernatePrintedOrderItem) {
+    public static void copyJsonToHibernate(ipratico.tools.elab.datas.json.model.call1.PrintedOrderItem jsonPrintedOrderItem, ipratico.tools.elab.datas.persitence.beans.callJson.PrintedOrderItemEntity hibernatePrintedOrderItem) {
         // Copia il campo order
         hibernatePrintedOrderItem.setOrderId(jsonPrintedOrderItem.getOrder());
 

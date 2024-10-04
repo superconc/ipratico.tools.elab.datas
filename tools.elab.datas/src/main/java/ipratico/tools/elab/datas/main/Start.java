@@ -13,6 +13,7 @@ import ipratico.tools.elab.datas.config.ConfigLoader;
 import ipratico.tools.elab.datas.json.model.call1.PaymentSession;
 import ipratico.tools.elab.datas.json.utils.impl.FirstCall;
 import ipratico.tools.elab.datas.json.utils.impl.MasterCall_abstract;
+import ipratico.tools.elab.datas.persitence.EntityManagerFactoryProvider;
 import ipratico.tools.elab.datas.persitence.beans.NegozioConfigEntity;
 import ipratico.tools.elab.datas.service.NegozioConfigService;
 
@@ -39,9 +40,22 @@ public class Start {
             //String key = "12747:64f49f08-00e6-4ed3-a5cf-b53040a55ce5";
             String key = ConfigLoader.getProperty("ipratico.key");
             
+            CallBusiness callBusiness = new CallBusiness();
+            
             MasterCall_abstract resultCall = new FirstCall(url, dateFrom, dateTo, key);
-            if(resultCall.execute())
-            	resultCall.getList(PaymentSession.class);
+            //facendo la chiamata viene anche validata, quindi se entra nell'IF vuol dire che tutto e' andato bene
+            if(resultCall.execute()) {
+            	List<PaymentSession> paymentSessions = resultCall.getList(PaymentSession.class);
+            	
+            	
+            	callBusiness.prepareDatasCall1(paymentSessions);
+            	
+            }
+            else
+            {
+            	//TODO eccezione mandare mail ad Ale che qualcosa e' andato storto 
+            }
+            	
             
         }
         catch (Exception e)
@@ -51,7 +65,7 @@ public class Start {
         }
         finally {
         	//TODO samuele scommentare per attivare il DB
-        	//EntityManagerFactoryProvider.close();
+        	EntityManagerFactoryProvider.close();
 		}
         logger.info("END PROCESS");
     }

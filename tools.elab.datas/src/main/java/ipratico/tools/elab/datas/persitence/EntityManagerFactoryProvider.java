@@ -10,7 +10,7 @@ public class EntityManagerFactoryProvider {
     // Inizializzazione dell'EntityManagerFactory
     static {
         try {
-            entityManagerFactory = Persistence.createEntityManagerFactory("persistenceUnitSQLServer");
+            entityManagerFactory = Persistence.createEntityManagerFactory("persistenceUnitSQL");
         } catch (Throwable ex) {
             // Gestire l'errore di inizializzazione
             throw new ExceptionInInitializerError("Impossibile creare l'EntityManagerFactory: " + ex.getMessage());
