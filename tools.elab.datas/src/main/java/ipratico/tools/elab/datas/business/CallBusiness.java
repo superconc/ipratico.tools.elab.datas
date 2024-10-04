@@ -55,7 +55,8 @@ public class CallBusiness {
 			PaymentSession paymentSession = (PaymentSession) iterator.next();
 			paymentSession.getValue();
 			
-			ipratico.tools.elab.datas.persitence.beans.callJson.ClosedPaymentSessionEntity hibernateClosePaymentSession = new ClosedPaymentSessionEntity();
+			//bean della sezione persistence
+			ClosedPaymentSessionEntity hibernateClosePaymentSession = new ClosedPaymentSessionEntity();
 			ValueToClosedPaymentSessionMapper.copyJsonToHibernate(paymentSession.getValue(),hibernateClosePaymentSession);
 			ClosedPaymentSessionDao.insert(hibernateClosePaymentSession);
 		}

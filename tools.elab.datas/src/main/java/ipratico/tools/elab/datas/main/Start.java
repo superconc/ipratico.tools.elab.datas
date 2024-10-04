@@ -19,7 +19,6 @@ import ipratico.tools.elab.datas.service.NegozioConfigService;
 
 public class Start {
 	
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(Start.class);
 	
 	public static void main(String[] args)

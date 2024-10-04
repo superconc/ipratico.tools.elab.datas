@@ -3,28 +3,25 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
-    <persistence-unit name="persistenceUnitSQL" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="pu-postgres" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- Elenco delle classi entity -->
-        <class>ipratico.tools.elab.datas.persitence.beans.callJson.NomeClasseEntity1</class>
-        <class>ipratico.tools.elab.datas.persitence.beans.callJson.NomeClasseEntity2</class>
-        <class>ipratico.tools.elab.datas.persitence.beans.callJson.NomeClasseEntity3</class>
-        <class>ipratico.tools.elab.datas.persitence.beans.callJson.NomeClasseEntity4</class>
+        <class>ipratico.tools.elab.datas.persitence.beans.callJson.ClosedPaymentSessionEntity</class>
+        <class>ipratico.tools.elab.datas.persitence.beans.callJson.PaymentEntity</class>
+        <class>ipratico.tools.elab.datas.persitence.beans.callJson.PrintedOrderItemEntity</class>
+        <class>ipratico.tools.elab.datas.persitence.beans.callJson.VatResumeEntity</class>
+<!--         <class>ipratico.tools.elab.datas.persitence.beans.callJson.EntityTest</class> -->
         <class>ipratico.tools.elab.datas.persitence.beans.NegozioConfigEntity</class>
         <class>ipratico.tools.elab.datas.persitence.beans.NegozioEntity</class>
         <class>ipratico.tools.elab.datas.persitence.beans.NegozioTipiEntity</class>
         <properties>
-            <!-- Configurazione della connessione al database -->
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="M@geroya0903"/>
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            
-            <!-- Configurazione di Hibernate -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>
