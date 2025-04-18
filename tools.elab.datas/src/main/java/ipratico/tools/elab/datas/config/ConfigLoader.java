@@ -35,11 +35,11 @@ public class ConfigLoader {
         return properties.getProperty(key);
     }
 
-    public static void main(String[] args) {
-       
-        // Use the properties without reloading the file
-        System.out.println("App Name: " + ConfigLoader.getProperty("app.name"));
-        System.out.println("App Version: " + ConfigLoader.getProperty("app.version"));
-        System.out.println("App Author: " + ConfigLoader.getProperty("app.author"));
-    }
+//    public static void main(String[] args) {
+//       
+//        // Use the properties without reloading the file
+//        System.out.println("App Name: " + ConfigLoader.getProperty("app.name"));
+//        System.out.println("App Version: " + ConfigLoader.getProperty("app.version"));
+//        System.out.println("App Author: " + ConfigLoader.getProperty("app.author"));
+//    }
 }

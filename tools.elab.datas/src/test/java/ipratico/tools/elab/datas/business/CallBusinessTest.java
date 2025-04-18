@@ -12,7 +12,7 @@ import ipratico.tools.elab.datas.persitence.beans.NegozioConfigEntity;
 import ipratico.tools.elab.datas.persitence.beans.callJson.ClosedPaymentSessionEntity;
 import ipratico.tools.elab.datas.persitence.dao.ClosedPaymentSessionDao;
 
-public class CallBusiness {
+public class CallBusinessTest {
 	
 	/**
 	 * Da usare per più negozi
@@ -49,7 +49,7 @@ public class CallBusiness {
 	}
 	
 	
-	public void prepareDatasCall(List<PaymentSession> paymentSessions) throws Exception 
+	public void prepareDatasCall1(List<PaymentSession> paymentSessions) throws Exception 
 	{
 		for (Iterator<PaymentSession> iterator = paymentSessions.iterator(); iterator.hasNext();) {
 			PaymentSession paymentSession = (PaymentSession) iterator.next();
@@ -58,9 +58,7 @@ public class CallBusiness {
 			//bean della sezione persistence
 			ClosedPaymentSessionEntity hibernateClosePaymentSession = new ClosedPaymentSessionEntity();
 			ValueToClosedPaymentSessionMapper.copyJsonToHibernate(paymentSession.getValue(),hibernateClosePaymentSession);
-			hibernateClosePaymentSession.toString();
-//			hibernateClosePaymentSession.getPayments();
-//			ClosedPaymentSessionDao.insert(hibernateClosePaymentSession);
+			ClosedPaymentSessionDao.insert(hibernateClosePaymentSession);
 		}
 	}
 }

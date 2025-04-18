@@ -100,4 +100,14 @@ public class PaymentEntity {
 		this.closedPaymentSession = closedPaymentSession;
 	}
 
+	@Override
+	public String toString() {
+		return "PaymentEntity [id=" + id + ", createdDate=" + createdDate + ", amount=" + amount
+				+ ", isPaymentWithFidelityCard=" + isPaymentWithFidelityCard + ", originalPaymentId="
+				+ originalPaymentId + ", moneyTypeName=" + moneyTypeName + ", moneyTypeId=" + moneyTypeId
+				+ ", closedPaymentSession=" + closedPaymentSession + "]";
+	}
+	
+	
+
 }

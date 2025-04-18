@@ -8,8 +8,9 @@ import java.util.Set;
 @Table(name = "closed_payment_session")
 public class ClosedPaymentSessionEntity {
 
-    @Id
-    @Column(name = "id")
+	@Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "closed_payment_session_id_seq")
+    @SequenceGenerator(name = "closed_payment_session_id_seq", sequenceName = "closed_payment_session_id_seq", allocationSize = 1)
     private String id;
 
     @Column(name = "cas")
@@ -86,7 +87,7 @@ public class ClosedPaymentSessionEntity {
     @Column(name = "successfully_printed_on_fiscal")
     private Boolean successfullyPrintedOnFiscal;
 
-    @OneToMany(mappedBy = "closedPaymentSession", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "closedPaymentSessionEntity", cascade = CascadeType.ALL)
     private Set<VatResumeEntity> vatResumes;
 
     @OneToMany(mappedBy = "closedPaymentSession", cascade = CascadeType.ALL)
@@ -318,4 +319,20 @@ public class ClosedPaymentSessionEntity {
 	public void setPrintedOrderItems(Set<PrintedOrderItemEntity> printedOrderItems) {
 		this.printedOrderItems = printedOrderItems;
 	}
+
+	@Override
+	public String toString() {
+		return "ClosedPaymentSessionEntity [id=" + id + ", cas=" + cas + ", appVersion=" + appVersion + ", type=" + type
+				+ ", deviceId=" + deviceId + ", documentType=" + documentType + ", creditTotal=" + creditTotal
+				+ ", orderId=" + orderId + ", billNumber=" + billNumber + ", surchargesTotal=" + surchargesTotal
+				+ ", hasEdoc=" + hasEdoc + ", fixedByApp=" + fixedByApp + ", businessMemberId=" + businessMemberId
+				+ ", didScanGiftBill=" + didScanGiftBill + ", deviceName=" + deviceName + ", zNumber=" + zNumber
+				+ ", purpose=" + purpose + ", closedOrderId=" + closedOrderId + ", paymentsTotal=" + paymentsTotal
+				+ ", receiptAmount=" + receiptAmount + ", closureDate=" + closureDate + ", closureId=" + closureId
+				+ ", referenceDate=" + referenceDate + ", referenceWeekDay=" + referenceWeekDay
+				+ ", successfullyPrintedOnFiscal=" + successfullyPrintedOnFiscal + ", vatResumes=" + vatResumes
+				+ ", payments=" + payments + ", printedOrderItems=" + printedOrderItems + "]";
+	}
+	
+	
 }

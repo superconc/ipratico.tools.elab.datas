@@ -129,5 +129,12 @@ public class PrintedOrderItemEntity {
 		this.closedPaymentSession = closedPaymentSession;
 	}
 
-
+	@Override
+	public String toString() {
+		return "PrintedOrderItemEntity [id=" + id + ", orderId=" + orderId + ", orderItemName=" + orderItemName
+				+ ", productId=" + productId + ", productCategoryId=" + productCategoryId + ", quantity=" + quantity
+				+ ", finalNetPrice=" + finalNetPrice + ", finalPrice=" + finalPrice + ", vatRecordCategoryId="
+				+ vatRecordCategoryId + ", vatRecordCategoryName=" + vatRecordCategoryName + ", closedPaymentSession="
+				+ closedPaymentSession + "]";
+	}
 }

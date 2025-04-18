@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import ipratico.tools.elab.datas.business.CallBusiness;
 import ipratico.tools.elab.datas.config.ConfigLoader;
-import ipratico.tools.elab.datas.config.UseDatabase;
 import ipratico.tools.elab.datas.json.model.call1.PaymentSession;
 import ipratico.tools.elab.datas.json.utils.impl.FirstCall;
 import ipratico.tools.elab.datas.json.utils.impl.MasterCall_abstract;
@@ -18,7 +17,7 @@ import ipratico.tools.elab.datas.persitence.EntityManagerFactoryProvider;
 import ipratico.tools.elab.datas.persitence.beans.NegozioConfigEntity;
 import ipratico.tools.elab.datas.service.NegozioConfigService;
 
-public class Start {
+public class StartTest {
 	
 	private static final Logger logger = LoggerFactory.getLogger(Start.class);
 	
@@ -47,7 +46,8 @@ public class Start {
             if(resultCall.execute()) {
             	List<PaymentSession> paymentSessions = resultCall.getList(PaymentSession.class);
             	
-            	callBusiness.prepareDatasCall(paymentSessions);
+            	
+            	
             	
             }
             else
@@ -63,8 +63,8 @@ public class Start {
             e.printStackTrace();
         }
         finally {
-        	if(UseDatabase.isActiveDatabase())
-        		EntityManagerFactoryProvider.close();
+        	//TODO samuele scommentare per attivare il DB
+//        	EntityManagerFactoryProvider.close();
 		}
         logger.info("END PROCESS");
     }

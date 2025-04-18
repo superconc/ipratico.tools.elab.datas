@@ -1,14 +1,29 @@
 package ipratico.tools.elab.datas.persitence.beans.callJson;
 
-import javax.persistence.*;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "vat_resume")
-public class VatResumeEntity {
+@IdClass(VatResumeId.class)
+public class VatResumeEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	private static final long serialVersionUID = -8036901813305585181L;
+
+	@Id
+    @ManyToOne
+    @JoinColumn(name = "closed_payment_session_id", referencedColumnName = "id")
+    private ClosedPaymentSessionEntity closedPaymentSessionEntity;
+
+//    @Id
+//    private String vatRecordCategoryId;
 
     @Column(name = "rate")
     private Float rate;
@@ -31,17 +46,11 @@ public class VatResumeEntity {
     @Column(name = "vat_record_category_name")
     private String vatRecordCategoryName;
 
-    @ManyToOne
-    @JoinColumn(name = "closed_payment_session_id", nullable = false)
-    private ClosedPaymentSessionEntity closedPaymentSession;
+//    @ManyToOne
+//    @JoinColumn(name = "closed_payment_session_id", nullable = false)
+//    private ClosedPaymentSessionEntity closedPaymentSessionEntity;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	public Float getRate() {
 		return rate;
@@ -99,11 +108,42 @@ public class VatResumeEntity {
 		this.vatRecordCategoryName = vatRecordCategoryName;
 	}
 
-	public ClosedPaymentSessionEntity getClosedPaymentSession() {
-		return closedPaymentSession;
+	public ClosedPaymentSessionEntity getClosedPaymentSessionEntoty() {
+		return closedPaymentSessionEntity;
 	}
 
-	public void setClosedPaymentSession(ClosedPaymentSessionEntity closedPaymentSession) {
+	public void setClosedPaymentSession(ClosedPaymentSessionEntity closedPaymentSessionEntity) {
+		this.closedPaymentSessionEntity = closedPaymentSessionEntity;
+	}
+
+	@Override
+	public String toString() {
+		return "VatResumeEntity [closedPaymentSessionEntity=" + closedPaymentSessionEntity + ", rate=" + rate
+				+ ", shortName=" + shortName + ", tax=" + tax + ", netValue=" + netValue + ", taxedValue=" + taxedValue
+				+ ", vatRecordCategoryId=" + vatRecordCategoryId + ", vatRecordCategoryName=" + vatRecordCategoryName
+				+ "]";
+	}
+	
+	
+}
+
+//Chiave primaria composta
+class VatResumeId implements Serializable {
+	private Integer closedPaymentSession;
+	private String vatRecordCategoryId;
+	
+	
+	public Integer getClosedPaymentSession() {
+		return closedPaymentSession;
+	}
+	public void setClosedPaymentSession(Integer closedPaymentSession) {
 		this.closedPaymentSession = closedPaymentSession;
 	}
+	public String getVatRecordCategoryId() {
+		return vatRecordCategoryId;
+	}
+	public void setVatRecordCategoryId(String vatRecordCategoryId) {
+		this.vatRecordCategoryId = vatRecordCategoryId;
+	}
+	
 }
